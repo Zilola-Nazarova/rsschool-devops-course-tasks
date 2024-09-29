@@ -10,9 +10,9 @@ on:
       - dev
 
 env:
-  AWS_REGION : ${{ vars.aws_region }}
+  AWS_REGION : ${{ vars.AWS_REGION }}
   IAM_ACCOUNT_ID: ${{ secrets.iam_account_id }}
-  IAM_GITHUB_ACTIONS_ROLE: ${{ vars.aws_iam_github_actions_role }}
+  IAM_GITHUB_ACTIONS_ROLE: ${{ vars.AWS_IAM_GITHUB_ACTIONS_ROLE }}
 
 jobs:
   terraform_init:
