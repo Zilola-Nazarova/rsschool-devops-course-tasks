@@ -1,0 +1,32 @@
+name: Deploy with Terraform
+
+permissions:
+  id-token: write   # This is required for requesting the JWT
+  contents: read    # This is required for actions/checkout
+
+on:
+  pull request:
+    branches:
+      - dev
+
+env:
+  AWS_REGION : ${{ vars.aws_region }}
+  IAM_ACCOUNT_ID: ${{ secrets.iam_account_id }}
+  IAM_GITHUB_ACTIONS_ROLE: ${{ vars.aws_iam_github_actions_role }}
+
+jobs:
+  terraform_init:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          audience: sts.amazonaws.com
+          aws-region: ${{ env.AWS_REGION }}
+          role-to-assume: arn:aws:iam::${{ env.IAM_ACCOUNT_ID }}:role/${{ env.IAM_GITHUB_ACTIONS_ROLE }}
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+      - name: Terraform Init
+        run: terraform init
