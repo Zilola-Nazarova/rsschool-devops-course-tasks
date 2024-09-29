@@ -11,8 +11,8 @@ on:
 
 env:
   AWS_REGION : ${{ vars.AWS_REGION }}
-  IAM_ACCOUNT_ID: ${{ secrets.iam_account_id }}
-  IAM_GITHUB_ACTIONS_ROLE: ${{ vars.AWS_IAM_GITHUB_ACTIONS_ROLE }}
+  IAM_ACCOUNT_ID: ${{ secrets.IAM_ACCOUNT_ID }}
+  IAM_GITHUB_ACTIONS_ROLE: ${{ vars.IAM_GITHUB_ACTIONS_ROLE }}
 
 jobs:
   terraform_init:
@@ -30,3 +30,12 @@ jobs:
         uses: hashicorp/setup-terraform@v3
       - name: Terraform Init
         run: terraform init
+
+  terraform_check:
+    runs-on: ubuntu-latest
+    needs: terraform_init
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4       
+      - name: Terraform Plan
+        run: terraform fmt
