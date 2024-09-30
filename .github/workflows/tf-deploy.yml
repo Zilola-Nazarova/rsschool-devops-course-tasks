@@ -51,5 +51,7 @@ jobs:
         with:
           aws-region: eu-central-1
           role-to-assume: arn:aws:iam::${{ env.IAM_ACCOUNT_ID }}:role/${{ env.IAM_GITHUB_ACTIONS_ROLE }}
+      - name: Reinitialize
+        run: terraform init
       - name: Terraform Plan
         run: terraform plan -input=false
