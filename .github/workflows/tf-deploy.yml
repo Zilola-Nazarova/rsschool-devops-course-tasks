@@ -37,7 +37,7 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      - name: Terraform Plan
+      - name: Terraform Check
         run: terraform fmt
 
   terraform_plan:
@@ -51,6 +51,8 @@ jobs:
         with:
           aws-region: ${{ env.AWS_REGION }}
           role-to-assume: arn:aws:iam::${{ env.IAM_ACCOUNT_ID }}:role/${{ env.IAM_GITHUB_ACTIONS_ROLE }}
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
       - name: Reinitialize
         run: terraform init
       - name: Terraform Plan
