@@ -7,9 +7,9 @@ terraform {
   }
 
   backend "s3" {
-    bucket         = "rsschool-devops-course-tfstate"
-    key            = "state/terraform.tfstate"
-    region         = "eu-north-1"
-    encrypt        = true
+    bucket  = "rsschool-devops-course-tfstate"
+    key     = "state/terraform.tfstate"
+    region  = "eu-north-1"
+    encrypt = true
   }
 }
