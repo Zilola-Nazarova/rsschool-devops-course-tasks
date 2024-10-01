@@ -36,7 +36,7 @@ jobs:
     needs: terraform_init
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4       
+        uses: actions/checkout@v4
       - name: Terraform Plan
         run: terraform fmt
 
@@ -49,7 +49,7 @@ jobs:
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          aws-region: eu-central-1
+          aws-region: ${{ env.AWS_REGION }}
           role-to-assume: arn:aws:iam::${{ env.IAM_ACCOUNT_ID }}:role/${{ env.IAM_GITHUB_ACTIONS_ROLE }}
       - name: Reinitialize
         run: terraform init
