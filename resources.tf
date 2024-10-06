@@ -13,6 +13,6 @@ resource "aws_instance" "main_server" {
 resource "aws_vpc" "task_2_vpc" {
   cidr_block = var.vpc_cidr
   tags = {
-    Name = "My VPC for task_2"
+    Name = "Task 2 VPC"
   }
 }
