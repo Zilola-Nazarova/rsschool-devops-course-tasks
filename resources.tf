@@ -1,8 +1,11 @@
 resource "aws_instance" "main_server" {
-  ami           = "ami-000defd1c33d4d17b"
-  instance_type = "t3.micro"
+  count         = 1
+  ami           = var.aws_main_server_ami
+  instance_type = var.aws_main_server_instance_type
 
   tags = {
-    Name = "MainInstance"
+    Name = "My Amazon Linux"
+    Owner = "Zilola Nazarova"
+    Project = "Devops Course Task 1"
   }
 }

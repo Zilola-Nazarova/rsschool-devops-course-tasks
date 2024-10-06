@@ -4,6 +4,18 @@ variable "aws_region" {
   default     = "eu-north-1"
 }
 
+variable "aws_main_server_ami" {
+  description = "AWS main server AMI"
+  type        = string
+  default     = "ami-000defd1c33d4d17b"
+}
+
+variable "aws_main_server_instance_type" {
+  description = "AWS main server instance type"
+  type        = string
+  default     = "t3.micro"
+}
+
 variable "aws_s3_bucket" {
   description = "AWS S3 bucket name"
   type        = string
