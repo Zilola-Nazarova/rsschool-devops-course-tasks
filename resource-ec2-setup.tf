@@ -1,4 +1,18 @@
-data "aws_subnet" "public_subnet" { // fetches public_subnets resource
+resource "aws_instance" "main_server" {
+  count         = 1
+  ami           = var.aws_linux_ami
+  instance_type = var.aws_linux_instance_type
+
+  tags = {
+    Name    = "My Amazon Linux"
+    Owner   = "Zilola Nazarova"
+    Project = "Devops Course Task 1"
+  }
+}
+
+// fetch only public_subnets resources
+
+data "aws_subnet" "public_subnet" { 
   filter {
     name   = "tag:Name"
     values = ["Public Subnet #1"]
