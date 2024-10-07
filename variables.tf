@@ -4,13 +4,13 @@ variable "aws_region" {
   default     = "eu-north-1"
 }
 
-variable "aws_main_server_ami" {
+variable "aws_linux_ami" {
   description = "AWS main server AMI"
   type        = string
   default     = "ami-000defd1c33d4d17b"
 }
 
-variable "aws_main_server_instance_type" {
+variable "aws_linux_instance_type" {
   description = "AWS main server instance type"
   type        = string
   default     = "t3.micro"
@@ -62,4 +62,9 @@ variable "eu_availability_zone" {
   description = "Private Subnet CIDR values"
   type        = list(string)
   default     = ["eu-north-1a", "eu-north-1b"]
+}
+
+variable "ssh_pubkey_file" {
+  description = "Path to an SSH public key"
+  default     = "C:/Program Files/.ssh/aws/aws_key.pub"
 }
