@@ -1,3 +1,4 @@
+// CREATE PUBLIC ROUTE TABLE FOR 2 PUBLIC SUBNETS
 resource "aws_route_table" "public_route_table" {
   vpc_id = aws_vpc.task_2_vpc.id
 
@@ -12,6 +13,7 @@ resource "aws_route_table" "public_route_table" {
   }
 }
 
+// CREATE 2 PRIVATE ROUTE TABLES FOR 2 PRIVATE SUBNETS
 resource "aws_route_table" "private_route_table" {
   count      = length(var.cidr_private_subnet)
   vpc_id     = aws_vpc.task_2_vpc.id

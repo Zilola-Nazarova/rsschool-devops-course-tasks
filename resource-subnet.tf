@@ -1,3 +1,4 @@
+// CREATE 2 PUPLIC SUBNETS FOR 2 DIFFERENT AZS
 resource "aws_subnet" "public_subnets" {
   count             = length(var.cidr_public_subnet)
   vpc_id            = aws_vpc.task_2_vpc.id
@@ -9,6 +10,7 @@ resource "aws_subnet" "public_subnets" {
   }
 }
 
+// CREATE 2 PRIVATE SUBNETS FOR 2 DIFFERENT AZS
 resource "aws_subnet" "private_subnets" {
   count             = length(var.cidr_private_subnet)
   vpc_id            = aws_vpc.task_2_vpc.id
