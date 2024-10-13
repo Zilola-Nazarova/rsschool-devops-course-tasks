@@ -53,6 +53,17 @@ resource "aws_security_group_rule" "public_in_https" {
   security_group_id = aws_security_group.public_sg.id
 }
 
+// ALLOW ANY INBOUND TRAFFIC WITHIN VPC
+resource "aws_security_group_rule" "public_in_vpc" {
+  type        = "ingress"
+  from_port   = 0
+  to_port     = 65535
+  protocol    = "-1"
+  cidr_blocks = [aws_vpc.task_2_vpc.cidr_block]
+
+  security_group_id = aws_security_group.public_sg.id
+}
+
 // CREATE PRIVATE SECURITY GROUP FOR PRIVATE SUBNETS
 resource "aws_security_group" "private_sg" {
   name        = "private-sg"
@@ -78,7 +89,7 @@ resource "aws_security_group_rule" "private_out" {
 }
 
 // RESTRICT INBOUND TRAFFIC TO VPC'S CIDR BLOCKS
-resource "aws_security_group_rule" "private_in_ssh" {
+resource "aws_security_group_rule" "private_in_vpc" {
   type        = "ingress"
   from_port   = 0
   to_port     = 65535
