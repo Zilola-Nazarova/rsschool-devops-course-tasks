@@ -53,6 +53,11 @@ jobs:
           role-to-assume: arn:aws:iam::${{ env.IAM_ACCOUNT_ID }}:role/${{ env.IAM_GITHUB_ACTIONS_ROLE }}
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
+      - name: Set up aws_key.pub
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.AWS_KEY }}" > ~/.ssh/aws_key.pub
+          chmod 600 ~/.ssh/aws_key.pub
       - name: Reinitialize
         run: terraform init
       - name: Terraform Plan
@@ -71,6 +76,11 @@ jobs:
           role-to-assume: arn:aws:iam::${{ env.IAM_ACCOUNT_ID }}:role/${{ env.IAM_GITHUB_ACTIONS_ROLE }}
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
+      - name: Set up aws_key.pub
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.AWS_KEY }}" > ~/.ssh/aws_key.pub
+          chmod 600 ~/.ssh/aws_key.pub
       - name: Reinitialize
         run: terraform init
       - name: Terraform Apply
