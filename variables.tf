@@ -64,7 +64,12 @@ variable "eu_availability_zone" {
   default     = ["eu-north-1a", "eu-north-1b"]
 }
 
-variable "ssh_pubkey_file" {
+variable "ssh_pubkey_name" {
+  description = "Name of SSH key pair"
+  default     = "aws_keypair"
+}
+
+variable "ssh_pubkey_path" {
   description = "Path to an SSH public key"
-  default     = "C:/Program Files/.ssh/aws/aws_key.pub"
+  default     = "~/.ssh/aws_key.pub"
 }
