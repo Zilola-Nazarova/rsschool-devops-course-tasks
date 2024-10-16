@@ -24,6 +24,8 @@ resource "aws_instance" "ec2_private" {
   subnet_id              = element(aws_subnet.private_subnets[*].id, count.index)
   vpc_security_group_ids = [aws_security_group.private_sg.id]
 
+  key_name = var.ssh_pubkey_name
+
   tags = {
     Name    = "EC2 in Private Subnet #${count.index + 1}"
     Project = "Task 2"
