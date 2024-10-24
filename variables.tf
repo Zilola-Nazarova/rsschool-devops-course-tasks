@@ -4,13 +4,13 @@ variable "aws_region" {
   default     = "eu-north-1"
 }
 
-variable "aws_main_server_ami" {
+variable "aws_linux_ami" {
   description = "AWS main server AMI"
   type        = string
   default     = "ami-000defd1c33d4d17b"
 }
 
-variable "aws_main_server_instance_type" {
+variable "aws_linux_instance_type" {
   description = "AWS main server instance type"
   type        = string
   default     = "t3.micro"
@@ -38,4 +38,38 @@ variable "aws_iam_github_actions_role" {
   description = "IAM role for GitHub Actions"
   type        = string
   default     = "GithubActionsRole"
+}
+
+variable "vpc_cidr" {
+  description = "AWS VPC's CIDR value"
+  type        = string
+  default     = "10.0.0.0/16"
+}
+
+variable "cidr_public_subnet" {
+  description = "Public Subnet CIDR values"
+  type        = list(string)
+  default     = ["10.0.1.0/24", "10.0.2.0/24"]
+}
+
+variable "cidr_private_subnet" {
+  description = "Private Subnet CIDR values"
+  type        = list(string)
+  default     = ["10.0.3.0/24", "10.0.4.0/24"]
+}
+
+variable "eu_availability_zone" {
+  description = "Private Subnet CIDR values"
+  type        = list(string)
+  default     = ["eu-north-1a", "eu-north-1b"]
+}
+
+variable "ssh_pubkey_name" {
+  description = "Name of SSH key pair"
+  default     = "aws_keypair"
+}
+
+variable "ssh_pubkey_path" {
+  description = "Path to an SSH public key"
+  default     = "~/.ssh/aws_key.pub"
 }
