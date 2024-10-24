@@ -55,19 +55,19 @@ variable "vpc_cidr" {
 variable "cidr_public_subnet" {
   description = "Public Subnet CIDR values"
   type        = list(string)
-  default     = ["10.0.1.0/24", "10.0.2.0/24"]
+  default     = ["10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24"]
 }
 
 variable "cidr_private_subnet" {
   description = "Private Subnet CIDR values"
   type        = list(string)
-  default     = ["10.0.3.0/24", "10.0.4.0/24"]
+  default     = ["10.0.4.0/24", "10.0.5.0/24", "10.0.6.0/24"]
 }
 
 variable "eu_availability_zone" {
   description = "Private Subnet CIDR values"
   type        = list(string)
-  default     = ["eu-north-1a", "eu-north-1b"]
+  default     = ["eu-north-1a", "eu-north-1b", "eu-north-1c"]
 }
 
 variable "ssh_pubkey_name" {
