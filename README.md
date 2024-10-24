@@ -99,8 +99,8 @@ You can create your cluster:
 **1. Manually**
   Export environment variables to make the process easier:
   ```
-  export NAME=myfirstcluster.k8s.local
-  export KOPS_STATE_STORE=s3://prefix-example-com-state-store
+  export NAME=devops-course.k8s.local
+  export KOPS_STATE_STORE=s3://task3-kops-state-bucket
   ```
   In this project, gossip-based cluster is used.
 
@@ -132,6 +132,8 @@ kubectl get nodes
 Apply your deployment YAML file:
 ```
 kubectl apply -f https://k8s.io/examples/application/deployment-scale.yaml
+or
+kubectl apply -f https://k8s.io/examples/pods/simple-pod.yaml 
 ```
 (we used an example from https://kubernetes.io/)
 Verify that the Deployment has four Pods:
@@ -140,7 +142,7 @@ kubectl get pods -l app=nginx
 ```
 Create a Service object that exposes the deployment:
 ```
-kubectl expose deployment nginx-deployment -type=LoadBalancer --name=my-service
+kubectl expose deployment nginx-deployment --type=LoadBalancer --name=my-service
 ```
 Display information about the Service:
 ```
