@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "kops_state" {
-  bucket        = var.kops_state_bucket_name
+  bucket = var.kops_state_bucket_name
 
   tags = {
     Name    = "S3 Bucket for KOps State"
@@ -24,8 +24,8 @@ resource "aws_s3_bucket_public_access_block" "kops_access" {
 }
 
 resource "aws_s3_bucket_acl" "kops_acl" {
-  bucket = aws_s3_bucket.kops_state.id
-  acl    = "public-read"
+  bucket     = aws_s3_bucket.kops_state.id
+  acl        = "public-read"
   depends_on = [aws_s3_bucket_ownership_controls.kops_owner]
 }
 
