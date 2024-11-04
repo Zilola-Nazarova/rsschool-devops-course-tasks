@@ -16,10 +16,16 @@ variable "aws_linux_instance_type" {
   default     = "t3.micro"
 }
 
-variable "aws_s3_bucket" {
-  description = "AWS S3 bucket name"
+variable "kops_state_bucket_name" {
+  description = "Name of the bucket to store kops sate"
   type        = string
-  default     = "rsschool-devops-course-tfstate"
+  default     = "task3-kops-state-bucket"
+}
+
+variable "k8s_cluster_name" {
+  description = "Domain name of the Kubernetes cluster"
+  type        = string
+  default     = "devops-course.k8s.local"
 }
 
 variable "aws_s3_key_path" {
@@ -28,16 +34,16 @@ variable "aws_s3_key_path" {
   default     = "state/terraform.tfstate"
 }
 
-variable "aws_s3_dynamodb_table" {
-  description = "AWS S3 DynamoDB table"
-  type        = string
-  default     = "rsschool-devops-sourse-tf-lockid"
-}
-
 variable "aws_iam_github_actions_role" {
   description = "IAM role for GitHub Actions"
   type        = string
   default     = "GithubActionsRole"
+}
+
+variable "vpc_name" {
+  description = "Name of Task 2 VPC"
+  type        = string
+  default     = "task_2_vpc"
 }
 
 variable "vpc_cidr" {
@@ -49,19 +55,19 @@ variable "vpc_cidr" {
 variable "cidr_public_subnet" {
   description = "Public Subnet CIDR values"
   type        = list(string)
-  default     = ["10.0.1.0/24", "10.0.2.0/24"]
+  default     = ["10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24"]
 }
 
 variable "cidr_private_subnet" {
   description = "Private Subnet CIDR values"
   type        = list(string)
-  default     = ["10.0.3.0/24", "10.0.4.0/24"]
+  default     = ["10.0.4.0/24", "10.0.5.0/24", "10.0.6.0/24"]
 }
 
 variable "eu_availability_zone" {
   description = "Private Subnet CIDR values"
   type        = list(string)
-  default     = ["eu-north-1a", "eu-north-1b"]
+  default     = ["eu-north-1a", "eu-north-1b", "eu-north-1c"]
 }
 
 variable "ssh_pubkey_name" {

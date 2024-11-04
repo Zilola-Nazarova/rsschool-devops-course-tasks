@@ -1,5 +1,5 @@
 resource "aws_eip" "nat_eip" {
-  vpc   = true
+  vpc = true
 
   tags = {
     Name    = "Elastic IP for NAT Gateway"
